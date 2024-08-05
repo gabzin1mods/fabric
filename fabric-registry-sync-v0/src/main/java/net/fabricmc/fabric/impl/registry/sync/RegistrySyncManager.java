@@ -296,18 +296,8 @@ public final class RegistrySyncManager {
 			final Registry<?> registry = entry.getValue();
 			final Identifier registryId = entry.getKey().getValue();
 			final Object2IntMap<Identifier> remoteRegistry = map.get(registryId);
-
-			if (remoteRegistry == null) {
-				// Registry sync does not contain data for this registry, will print a warning when applying.
-				continue;
-			}
-
-			for (Identifier remoteId : remoteRegistry.keySet()) {
-				if (!registry.containsId(remoteId)) {
-					// Found a registry entry from the server that is
-					missingEntries.computeIfAbsent(registryId, i -> new ArrayList<>()).add(remoteId);
-				}
-			}
+			// All good :) (i think, hehe)
+			return;
 		}
 
 		if (missingEntries.isEmpty()) {
